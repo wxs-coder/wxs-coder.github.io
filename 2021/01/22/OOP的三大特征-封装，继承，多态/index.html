@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文主要对封装，继承，多态，以及抽象，接口进行一个概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OOP的三大特征--封装，继承，多态">
+<meta property="og:url" content="http://example.com/2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/index.html">
+<meta property="og:site_name" content="WXSong&#39;s blog">
+<meta property="og:description" content="本文主要对封装，继承，多态，以及抽象，接口进行一个概述">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-22T14:21:24.000Z">
+<meta property="article:modified_time" content="2021-01-22T16:39:35.883Z">
+<meta property="article:author" content="WXSong">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>OOP的三大特征--封装，继承，多态 | WXSong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WXSong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">a student</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pics1.baidu.com/feed/730e0cf3d7ca7bcb53a93fdac0b6f565f424a8bf.jpeg?token=0c020936e80756cb783469f5cb0c689f#/images/avatar.gif">
+      <meta itemprop="name" content="WXSong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WXSong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OOP的三大特征--封装，继承，多态
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-22 22:21:24" itemprop="dateCreated datePublished" datetime="2021-01-22T22:21:24+08:00">2021-01-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-23 00:39:35" itemprop="dateModified" datetime="2021-01-23T00:39:35+08:00">2021-01-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文主要对封装，继承，多态，以及抽象，接口进行一个概述</p>
+<a id="more"></a>
+
+
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><blockquote>
+<p>封装：java中对象就是一组变量和方法的封装（实现使用者和设计者的分离）</p>
+</blockquote>
+<pre><code>- 类的可见性：public和非public；
+- 类的成员可见性： public , protected , default( 默认)  , private;</code></pre>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式:"></a>格式:</h3><pre><code>\[修饰符] class 类名 extends 父类 &#123;
+        类体;
+       &#125;</code></pre>
+<h3 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h3><pre><code>- 继承是OOP从已有类获得新的类的方式
+- 仅支持类的单重继承
+- 只继承父类的所有非私有的成员变量和方法
+- 继承中构造方法的关系：子类中所有的构造方法默认都会访问父类中空参数的构造方法。
+  因为子类会继承父类中的数据，可能还会使用父类的数据。所以，子类初始化之前，
+  一定要先完成父类数据的初始化。
+- 子类也可以重新定义父类中同名的属性(变量的隐藏，很少这么做)和方法(方法的覆盖、重载)；
+- this, super关键字（重点）
+  1. this：表示对“自身”的引用（等同于C++的this指针）。因为表示的是一个具体对象，
+  一定不能出现在static方法中。
+  三种形式：this.x;    this.move();    this()
+  2. super：表示当前对象的“父类对象”的引用，和this一样有三种形式
+- 状态修饰符：final
+    类：类被final修饰，说明该类是最终类，不能被继承。
+    成员变量：变量被final修饰后，就变成了常量。值不能被修改。
+    成员方法：方法不能被子类重写。</code></pre>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态是什么"><a href="#多态是什么" class="headerlink" title="多态是什么"></a>多态是什么</h3><ul>
+<li>同种类的多个对象，在接收到同一个消息时却产生了不同反应和效果；</li>
+<li>从代码形式上看: 父类的对象变量调用了子类中重写的方法（注意: 往往是有<br>一个父类，而他有多个子类，且在这些子类中同时重写父类的某个方法）;</li>
+<li>多态的前提是有一个父类和多个子类</li>
+</ul>
+<h3 id="多态分类"><a href="#多态分类" class="headerlink" title="多态分类"></a>多态分类</h3><ul>
+<li>编译时多态：方法名相同、参数表不同(伪多态)，通过方法重载实现—作用小；</li>
+<li>运行时多态：运行时，根据对象的具体类型不同决定调用什么形式的方法。<br>使用父类引用指向子类对象，再调用某一父类中的方法时，不同子类会表现出不同结果）–作用大<br>运行时多态是Java动态特性的典型体现；</li>
+</ul>
+<h3 id="运行时多态"><a href="#运行时多态" class="headerlink" title="运行时多态"></a>运行时多态</h3><ul>
+<li>运行时多态的两个前提：</li>
+</ul>
+<p>  <strong>上溯造型(Upcasting)、方法重写(Overriding)</strong><br>  上溯造型：取得一个子类对象，将其地址赋给父类型的引用<br>  <code>Automobile a = new Car();</code><br>  方法重写：子类重新定义父类中的方法(方法返回值、方法名、方法参数表)；</p>
+<h3 id="方法的重载和重写"><a href="#方法的重载和重写" class="headerlink" title="方法的重载和重写"></a>方法的重载和重写</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>方法的重载(Overloading)：几个方法的方法名相同，参数表不同，称为方法的重载；</li>
+<li>方法的重写(Overriding)：子类重新定义父类中的已经存在的方法(方法名、参数表、<br> 返回值完全相同，访问控制可以不同)</li>
+<li>方法重载一般发生在一个类的内部，而方法重写一般是发生在父类、子类之间：</li>
+</ul>
+<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
+<li>子类重新定的方法不能比父类中的方法有更严格的访问权限；</li>
+<li>子类重新定义的方法不能比父类的方法传递更多的异常；</li>
+</ul>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>语法形式： 使用abstract修饰的类叫做抽象类， 使用abstract修饰的方法叫做抽象方法；</li>
+<li>抽象类不能实例化对象，只能作为父类派生子类；</li>
+<li>抽象类不一定包含抽象方法(抽象类包含n个抽象方法，n&gt;=0)，包含了抽象方法的类一定是抽象类；<br>n=0,(为了不让别人创建对象)；    </li>
+<li>抽象方法只有方法的声名，没有方法体，格式如：<br>  abstract double area();</li>
+<li>非abstract方法中可以调用abstract方法</li>
+<li>abstract和final/private/static不能共存</li>
+<li>由抽象类派生的非抽象子类必须实现父类中的所有抽象方法；<pre class="line-numbers language-none"><code class="language-none">public abstract class Pole &#123;
+	int height &#x3D;10;
+	public abstract double area ();&#x2F;&#x2F;抽象方法
+	public double volumn()&#123;
+		return area*height;
+	&#125;
+	public static void main(string [] args )&#123;
+		Pole p&#x3D;new CirclePole ();       &#x2F;&#x2F; 多态；
+		System.out.println(p.volumn);
+	&#125;
+&#125;
+
+class CirclePole extends Pole &#123;
+	int radius&#x3D;5;
+	double area()&#123;      &#x2F;&#x2F;重写父类抽象方法
+		return Math.PI * radius * radius ;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>接口是一个更“纯”的抽象类。(不能含有非abstract方法，变量)</li>
+<li>接口里面定义的抽象方法被自动赋予public abstract，接口里面的变量自动被赋予public static final；</li>
+<li>在接口中声明方法时，不能使用native、static 、final 、synchronized 、private 、protected等修饰符；</li>
+<li>一个非抽象类实现了某个接口，必须覆盖（重写）接口里面所有的抽象方法</li>
+<li>一个类实现一个接口，使用关键字implements. </li>
+<li>一个类可以实现(implements)多个接口、一个接口可以继承(extends)多个接口；</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">public interface PoleInterface&#123;
+	pubic static final int HEIGHT&#x3D;20;
+	public abstract double area();
+&#125;
+class CirclePole2 implements PoleInterface&#123;
+	public double()&#123;
+
+		return 0 ;   
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/22/Java%E6%A6%82%E8%BF%B0/" rel="prev" title="Java概述">
+      <i class="fa fa-chevron-left"></i> Java概述
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">格式:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">特性：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E6%80%81%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">3.1.</span> <span class="nav-text">多态是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E6%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">3.2.</span> <span class="nav-text">多态分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%A4%9A%E6%80%81"><span class="nav-number">3.3.</span> <span class="nav-text">运行时多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99"><span class="nav-number">3.4.</span> <span class="nav-text">方法的重载和重写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">3.4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%84%E5%88%99"><span class="nav-number">3.4.2.</span> <span class="nav-text">规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">5.</span> <span class="nav-text">接口</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="WXSong"
+      src="https://pics1.baidu.com/feed/730e0cf3d7ca7bcb53a93fdac0b6f565f424a8bf.jpeg?token=0c020936e80756cb783469f5cb0c689f#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">WXSong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WXSong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 --><script type="text/javascript" src="/js/love.js"></script>
+
+

@@ -84,6 +84,110 @@
 ]]></content>
   </entry>
   <entry>
+    <title>OOP的三大特征--封装，继承，多态</title>
+    <url>/2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[<p>本文主要对封装，继承，多态，以及抽象，接口进行一个概述</p>
+<a id="more"></a>
+
+
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><blockquote>
+<p>封装：java中对象就是一组变量和方法的封装（实现使用者和设计者的分离）</p>
+</blockquote>
+<pre><code>- 类的可见性：public和非public；
+- 类的成员可见性： public , protected , default( 默认)  , private;</code></pre>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式:"></a>格式:</h3><pre><code>\[修饰符] class 类名 extends 父类 &#123;
+        类体;
+       &#125;</code></pre>
+<h3 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h3><pre><code>- 继承是OOP从已有类获得新的类的方式
+- 仅支持类的单重继承
+- 只继承父类的所有非私有的成员变量和方法
+- 继承中构造方法的关系：子类中所有的构造方法默认都会访问父类中空参数的构造方法。
+  因为子类会继承父类中的数据，可能还会使用父类的数据。所以，子类初始化之前，
+  一定要先完成父类数据的初始化。
+- 子类也可以重新定义父类中同名的属性(变量的隐藏，很少这么做)和方法(方法的覆盖、重载)；
+- this, super关键字（重点）
+  1. this：表示对“自身”的引用（等同于C++的this指针）。因为表示的是一个具体对象，
+  一定不能出现在static方法中。
+  三种形式：this.x;    this.move();    this()
+  2. super：表示当前对象的“父类对象”的引用，和this一样有三种形式
+- 状态修饰符：final
+    类：类被final修饰，说明该类是最终类，不能被继承。
+    成员变量：变量被final修饰后，就变成了常量。值不能被修改。
+    成员方法：方法不能被子类重写。</code></pre>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态是什么"><a href="#多态是什么" class="headerlink" title="多态是什么"></a>多态是什么</h3><ul>
+<li>同种类的多个对象，在接收到同一个消息时却产生了不同反应和效果；</li>
+<li>从代码形式上看: 父类的对象变量调用了子类中重写的方法（注意: 往往是有<br>一个父类，而他有多个子类，且在这些子类中同时重写父类的某个方法）;</li>
+<li>多态的前提是有一个父类和多个子类</li>
+</ul>
+<h3 id="多态分类"><a href="#多态分类" class="headerlink" title="多态分类"></a>多态分类</h3><ul>
+<li>编译时多态：方法名相同、参数表不同(伪多态)，通过方法重载实现—作用小；</li>
+<li>运行时多态：运行时，根据对象的具体类型不同决定调用什么形式的方法。<br>使用父类引用指向子类对象，再调用某一父类中的方法时，不同子类会表现出不同结果）–作用大<br>运行时多态是Java动态特性的典型体现；</li>
+</ul>
+<h3 id="运行时多态"><a href="#运行时多态" class="headerlink" title="运行时多态"></a>运行时多态</h3><ul>
+<li>运行时多态的两个前提：</li>
+</ul>
+<p>  <strong>上溯造型(Upcasting)、方法重写(Overriding)</strong><br>  上溯造型：取得一个子类对象，将其地址赋给父类型的引用<br>  <code>Automobile a = new Car();</code><br>  方法重写：子类重新定义父类中的方法(方法返回值、方法名、方法参数表)；</p>
+<h3 id="方法的重载和重写"><a href="#方法的重载和重写" class="headerlink" title="方法的重载和重写"></a>方法的重载和重写</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>方法的重载(Overloading)：几个方法的方法名相同，参数表不同，称为方法的重载；</li>
+<li>方法的重写(Overriding)：子类重新定义父类中的已经存在的方法(方法名、参数表、<br> 返回值完全相同，访问控制可以不同)</li>
+<li>方法重载一般发生在一个类的内部，而方法重写一般是发生在父类、子类之间：</li>
+</ul>
+<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
+<li>子类重新定的方法不能比父类中的方法有更严格的访问权限；</li>
+<li>子类重新定义的方法不能比父类的方法传递更多的异常；</li>
+</ul>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>语法形式： 使用abstract修饰的类叫做抽象类， 使用abstract修饰的方法叫做抽象方法；</li>
+<li>抽象类不能实例化对象，只能作为父类派生子类；</li>
+<li>抽象类不一定包含抽象方法(抽象类包含n个抽象方法，n&gt;=0)，包含了抽象方法的类一定是抽象类；<br>n=0,(为了不让别人创建对象)；    </li>
+<li>抽象方法只有方法的声名，没有方法体，格式如：<br>  abstract double area();</li>
+<li>非abstract方法中可以调用abstract方法</li>
+<li>abstract和final/private/static不能共存</li>
+<li>由抽象类派生的非抽象子类必须实现父类中的所有抽象方法；<pre class="line-numbers language-none"><code class="language-none">public abstract class Pole &#123;
+	int height &#x3D;10;
+	public abstract double area ();&#x2F;&#x2F;抽象方法
+	public double volumn()&#123;
+		return area*height;
+	&#125;
+	public static void main(string [] args )&#123;
+		Pole p&#x3D;new CirclePole ();       &#x2F;&#x2F; 多态；
+		System.out.println(p.volumn);
+	&#125;
+&#125;
+
+class CirclePole extends Pole &#123;
+	int radius&#x3D;5;
+	double area()&#123;      &#x2F;&#x2F;重写父类抽象方法
+		return Math.PI * radius * radius ;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>接口是一个更“纯”的抽象类。(不能含有非abstract方法，变量)</li>
+<li>接口里面定义的抽象方法被自动赋予public abstract，接口里面的变量自动被赋予public static final；</li>
+<li>在接口中声明方法时，不能使用native、static 、final 、synchronized 、private 、protected等修饰符；</li>
+<li>一个非抽象类实现了某个接口，必须覆盖（重写）接口里面所有的抽象方法</li>
+<li>一个类实现一个接口，使用关键字implements. </li>
+<li>一个类可以实现(implements)多个接口、一个接口可以继承(extends)多个接口；</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">public interface PoleInterface&#123;
+	pubic static final int HEIGHT&#x3D;20;
+	public abstract double area();
+&#125;
+class CirclePole2 implements PoleInterface&#123;
+	public double()&#123;
+
+		return 0 ;   
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于Markdown的基本语法</title>
     <url>/2021/01/21/%E5%85%B3%E4%BA%8EMarkdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>Markdown是一种纯文本的标记语言，通过简单的语法标记，使得普通文本有一定的格式。</p>

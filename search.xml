@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java概述</title>
+    <url>/2021/01/22/Java%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<p>本文主要是对Java的一个概述。</p>
+<a id="more"></a>
+
+<h2 id="JVM-JDK-JRE"><a href="#JVM-JDK-JRE" class="headerlink" title="JVM,JDK,JRE"></a>JVM,JDK,JRE</h2><ul>
+<li>JVM: Java Virtual Machine（java虚拟机）是一个虚构出来的计算机，通过在实际的计算机上仿真模拟各种计算机功能实现的。<pre><code> JVM屏蔽了与具体操作系统平台相关的信息，使得java程序只需要生成在java虚拟机上运行的字节码文件，就可以在多种平
+ 台不加修改的运行。JVM在执行字节码文件时，最终还是把字节码文件解释成具体平台上的机器指令执行。</code></pre>
+</li>
+<li>JRE：Java Runtime Environment（Java运行环境），运行Java程序所必须的环境的集合，包含JVM标准实现及Java核心类库。  </li>
+<li>JDK: Java Development Kit(Java开发工具包)，java开发环境。包括JRE和开发工具(javac,java)。</li>
+</ul>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
+<li>path: 为OS能够方便、正确地查找JDK命令,即为了让javac和java命令可以在任意目录下使用。</li>
+<li>classpath: 解释器装载类时的搜索根目录,即为了让class文件可以在任意目录下运行。</li>
+</ul>
+<h2 id="Application-程序的基本编写运行步骤"><a href="#Application-程序的基本编写运行步骤" class="headerlink" title="Application 程序的基本编写运行步骤"></a>Application 程序的基本编写运行步骤</h2><ol>
+<li>设置系统环境变量</li>
+<li>编辑文本文件 HelloWorld.Java</li>
+<li>Javac    HelloWorld.Java<br>编译命令  文件名<br>生成 HelloWorld.class字节码文件</li>
+<li>Java        HelloWorld<br>执行命令     类名</li>
+</ol>
+<p>注意: Javac 编译源文件的时候，需要.Java后缀名<br>      Java解释执行字节码文件的时候，不能带.class后缀名</p>
+<h2 id="标识符命名规则"><a href="#标识符命名规则" class="headerlink" title="标识符命名规则"></a>标识符命名规则</h2><ol>
+<li><p>标识符：给类，接口，方法或者变量起名字的符号</p>
+</li>
+<li><p>组成规则：</p>
+<pre><code> - 英文字母大小写
+ - 数字
+ - \_和$</code></pre>
+</li>
+<li><p>注意事项：</p>
+<pre><code> - 不能以数字开头
+ - 不能是Java中的关键字
+ - 区分大小写</code></pre>
+</li>
+<li><p>常见命名方式：</p>
+<pre><code> - 包 （其实就是文件夹,用于解决相同类名问题）
+     全部小写
+     单级：com
+     多级：cn.itcast
+
+ - 类或者接口
+     一个单词：首字母大写
+         Student,Person,Teacher
+     多个单词：每个单词的首字母大写
+         HelloWorld,MyName,NameDemo
+
+ - 方法或者变量
+     一个单词：全部小写
+         name,age,show()
+     多个单词：从第二个单词开始，每个单词首字母大写
+         myName,showAllStudentNames()
+
+ - 常量
+     一个单词：全部大写
+         AGE
+     多个单词：每个单词都大写，用_连接
+         STUDENT_MAX_AGE</code></pre>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Java概述</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/01/17/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>

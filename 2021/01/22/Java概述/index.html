@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+  <meta name="description" content="本文主要是对Java的一个概述。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java概述">
+<meta property="og:url" content="http://example.com/2021/01/22/Java%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="WXSong&#39;s blog">
+<meta property="og:description" content="本文主要是对Java的一个概述。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-18T16:46:32.000Z">
-<meta property="article:modified_time" content="2021-01-18T16:47:15.518Z">
+<meta property="article:published_time" content="2021-01-22T11:27:33.000Z">
+<meta property="article:modified_time" content="2021-01-22T12:09:02.049Z">
 <meta property="article:author" content="WXSong">
+<meta property="article:tag" content="Java概述">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/">
+<link rel="canonical" href="http://example.com/2021/01/22/Java%E6%A6%82%E8%BF%B0/">
 
 
 <script id="page-configurations">
@@ -38,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>tags | WXSong's blog
-</title>
+  <title>Java概述 | WXSong's blog</title>
   
 
 
@@ -175,51 +177,141 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/22/Java%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pics1.baidu.com/feed/730e0cf3d7ca7bcb53a93fdac0b6f565f424a8bf.jpeg?token=0c020936e80756cb783469f5cb0c689f#/images/avatar.gif">
+      <meta itemprop="name" content="WXSong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WXSong's blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java概述
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2021-01-22 19:27:33 / 修改时间：20:09:02" itemprop="dateCreated datePublished" datetime="2021-01-22T19:27:33+08:00">2021-01-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文主要是对Java的一个概述。</p>
+<a id="more"></a>
+
+<h2 id="JVM-JDK-JRE"><a href="#JVM-JDK-JRE" class="headerlink" title="JVM,JDK,JRE"></a>JVM,JDK,JRE</h2><ul>
+<li>JVM: Java Virtual Machine（java虚拟机）是一个虚构出来的计算机，通过在实际的计算机上仿真模拟各种计算机功能实现的。<pre><code> JVM屏蔽了与具体操作系统平台相关的信息，使得java程序只需要生成在java虚拟机上运行的字节码文件，就可以在多种平
+ 台不加修改的运行。JVM在执行字节码文件时，最终还是把字节码文件解释成具体平台上的机器指令执行。</code></pre>
+</li>
+<li>JRE：Java Runtime Environment（Java运行环境），运行Java程序所必须的环境的集合，包含JVM标准实现及Java核心类库。  </li>
+<li>JDK: Java Development Kit(Java开发工具包)，java开发环境。包括JRE和开发工具(javac,java)。</li>
+</ul>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
+<li>path: 为OS能够方便、正确地查找JDK命令,即为了让javac和java命令可以在任意目录下使用。</li>
+<li>classpath: 解释器装载类时的搜索根目录,即为了让class文件可以在任意目录下运行。</li>
+</ul>
+<h2 id="Application-程序的基本编写运行步骤"><a href="#Application-程序的基本编写运行步骤" class="headerlink" title="Application 程序的基本编写运行步骤"></a>Application 程序的基本编写运行步骤</h2><ol>
+<li>设置系统环境变量</li>
+<li>编辑文本文件 HelloWorld.Java</li>
+<li>Javac    HelloWorld.Java<br>编译命令  文件名<br>生成 HelloWorld.class字节码文件</li>
+<li>Java        HelloWorld<br>执行命令     类名</li>
+</ol>
+<p>注意: Javac 编译源文件的时候，需要.Java后缀名<br>      Java解释执行字节码文件的时候，不能带.class后缀名</p>
+<h2 id="标识符命名规则"><a href="#标识符命名规则" class="headerlink" title="标识符命名规则"></a>标识符命名规则</h2><ol>
+<li><p>标识符：给类，接口，方法或者变量起名字的符号</p>
+</li>
+<li><p>组成规则：</p>
+<pre><code> - 英文字母大小写
+ - 数字
+ - \_和$</code></pre>
+</li>
+<li><p>注意事项：</p>
+<pre><code> - 不能以数字开头
+ - 不能是Java中的关键字
+ - 区分大小写</code></pre>
+</li>
+<li><p>常见命名方式：</p>
+<pre><code> - 包 （其实就是文件夹,用于解决相同类名问题）
+     全部小写
+     单级：com
+     多级：cn.itcast
+
+ - 类或者接口
+     一个单词：首字母大写
+         Student,Person,Teacher
+     多个单词：每个单词的首字母大写
+         HelloWorld,MyName,NameDemo
+
+ - 方法或者变量
+     一个单词：全部小写
+         name,age,show()
+     多个单词：从第二个单词开始，每个单词首字母大写
+         myName,showAllStudentNames()
+
+ - 常量
+     一个单词：全部大写
+         AGE
+     多个单词：每个单词都大写，用_连接
+         STUDENT_MAX_AGE</code></pre>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java%E6%A6%82%E8%BF%B0/" rel="tag"># Java概述</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/21/%E5%85%B3%E4%BA%8EMarkdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" rel="prev" title="关于Markdown的基本语法">
+      <i class="fa fa-chevron-left"></i> 关于Markdown的基本语法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 2 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Java%E6%A6%82%E8%BF%B0/" style="font-size: 12px; color: #ccc">Java概述</a> <a href="/tags/Markdown/" style="font-size: 12px; color: #ccc">Markdown</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -270,6 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-JDK-JRE"><span class="nav-number">1.</span> <span class="nav-text">JVM,JDK,JRE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%90%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">Application 程序的基本编写运行步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">标识符命名规则</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

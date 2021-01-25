@@ -20,15 +20,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WXSong&#39;s blog">
-<meta property="og:url" content="http://example.com/tags/Java%E6%A6%82%E8%BF%B0/index.html">
+  <meta name="description" content="简单的说，node.js就是运行在服务端的JavaScript。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈node.js">
+<meta property="og:url" content="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/index.html">
 <meta property="og:site_name" content="WXSong&#39;s blog">
+<meta property="og:description" content="简单的说，node.js就是运行在服务端的JavaScript。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/13.jpg">
+<meta property="og:image" content="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/11.jpg">
+<meta property="og:image" content="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/12.jpg">
+<meta property="article:published_time" content="2021-01-25T06:24:43.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:13:05.526Z">
 <meta property="article:author" content="WXSong">
+<meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/13.jpg">
 
-<link rel="canonical" href="http://example.com/tags/Java%E6%A6%82%E8%BF%B0/">
+<link rel="canonical" href="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/">
 
 
 <script id="page-configurations">
@@ -36,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Java概述 | WXSong's blog</title>
+  <title>浅谈node.js | WXSong's blog</title>
   
 
 
@@ -173,51 +182,106 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Java概述
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/25/%E6%B5%85%E8%B0%88node-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpg">
+      <meta itemprop="name" content="WXSong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WXSong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅谈node.js
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-25 14:24:43 / 修改时间：16:13:05" itemprop="dateCreated datePublished" datetime="2021-01-25T14:24:43+08:00">2021-01-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <p>简单的说，node.js就是运行在服务端的JavaScript。</p>
+<a id="more"></a>
+
+<h2 id="第一个node-js程序：HelloWorld"><a href="#第一个node-js程序：HelloWorld" class="headerlink" title="第一个node.js程序：HelloWorld!"></a>第一个node.js程序：HelloWorld!</h2><h3 id="脚本模式"><a href="#脚本模式" class="headerlink" title="脚本模式"></a>脚本模式</h3><p><code>console.log(&quot;HelloWorld&quot;)</code><br>保存文件，文件名为HelloWorld.js，并通过node命令在命令行执行：<br>        node HelloWorld.js</p>
+<h3 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h3><p>打开cmd或node.js ，键入node进入命令交互模式，可以输入语句并显示结果</p>
+<h2 id="node-js应用"><a href="#node-js应用" class="headerlink" title="node.js应用"></a>node.js应用</h2><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>var http = require(&#39;http&#39;);
+    // 使用 require 指令来载入 http 模块，并将实例化的 HTTP 赋值给变量 http
+http.createServer(function (request, response) &#123;
+    // 发送 HTTP 头部 
+    // HTTP 状态值: 200 : OK
+    // 内容类型: text/plain
+    response.writeHead(200, &#123;&#39;Content-Type&#39;: &#39;text/plain&#39;&#125;);
+
+        // 发送响应数据 &quot;Hello World&quot;
+        response.end(&#39;Hello World\n&#39;);
+    &#125;).listen(8888);
+
+// 终端打印如下信息
+console.log(&#39;Server running at http://127.0.0.1:8888/&#39;);</code></pre>
+<h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><ul>
+<li><p><img src="13.jpg" alt="目录"></p>
+</li>
+<li><p><img src="11.jpg" alt="命令行"></p>
+</li>
+<li><p><img src="12.jpg" alt="网页"></p>
+</li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-22T19:27:33+08:00"
-              content="2021-01-22">
-          01-22
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/node-js/" rel="tag"># node.js</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/22/Java%E6%A6%82%E8%BF%B0/" itemprop="url">
-            <span itemprop="name">Java概述</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/" rel="prev" title="OOP的三大特征--封装，继承，多态">
+      <i class="fa fa-chevron-left"></i> OOP的三大特征--封装，继承，多态
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -270,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAnode-js%E7%A8%8B%E5%BA%8F%EF%BC%9AHelloWorld"><span class="nav-number">1.</span> <span class="nav-text">第一个node.js程序：HelloWorld!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">脚本模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">交互模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">node.js应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.0.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%AA%E5%9B%BE"><span class="nav-number">2.0.2.</span> <span class="nav-text">截图</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

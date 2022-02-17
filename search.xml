@@ -1,295 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Java概述</title>
-    <url>/2021/01/22/Java%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<p>本文主要是对Java的一个概述。</p>
-<a id="more"></a>
-
-<h2 id="JVM-JDK-JRE"><a href="#JVM-JDK-JRE" class="headerlink" title="JVM,JDK,JRE"></a>JVM,JDK,JRE</h2><ul>
-<li>JVM: Java Virtual Machine（java虚拟机）是一个虚构出来的计算机，通过在实际的计算机上仿真模拟各种计算机功能实现的。<pre><code> JVM屏蔽了与具体操作系统平台相关的信息，使得java程序只需要生成在java虚拟机上运行的字节码文件，就可以在多种平
- 台不加修改的运行。JVM在执行字节码文件时，最终还是把字节码文件解释成具体平台上的机器指令执行。</code></pre>
-</li>
-<li>JRE：Java Runtime Environment（Java运行环境），运行Java程序所必须的环境的集合，包含JVM标准实现及Java核心类库。  </li>
-<li>JDK: Java Development Kit(Java开发工具包)，java开发环境。包括JRE和开发工具(javac,java)。</li>
-</ul>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
-<li>path: 为OS能够方便、正确地查找JDK命令,即为了让javac和java命令可以在任意目录下使用。</li>
-<li>classpath: 解释器装载类时的搜索根目录,即为了让class文件可以在任意目录下运行。</li>
-</ul>
-<h2 id="Application-程序的基本编写运行步骤"><a href="#Application-程序的基本编写运行步骤" class="headerlink" title="Application 程序的基本编写运行步骤"></a>Application 程序的基本编写运行步骤</h2><ol>
-<li>设置系统环境变量</li>
-<li>编辑文本文件 HelloWorld.Java</li>
-<li>Javac    HelloWorld.Java<br>编译命令  文件名<br>生成 HelloWorld.class字节码文件</li>
-<li>Java        HelloWorld<br>执行命令     类名</li>
-</ol>
-<p>注意: Javac 编译源文件的时候，需要.Java后缀名<br>      Java解释执行字节码文件的时候，不能带.class后缀名</p>
-<h2 id="标识符命名规则"><a href="#标识符命名规则" class="headerlink" title="标识符命名规则"></a>标识符命名规则</h2><ol>
-<li><p>标识符：给类，接口，方法或者变量起名字的符号</p>
-</li>
-<li><p>组成规则：</p>
-<pre><code> - 英文字母大小写
- - 数字
- - \_和$</code></pre>
-</li>
-<li><p>注意事项：</p>
-<pre><code> - 不能以数字开头
- - 不能是Java中的关键字
- - 区分大小写</code></pre>
-</li>
-<li><p>常见命名方式：</p>
-<pre><code> - 包 （其实就是文件夹,用于解决相同类名问题）
-     全部小写
-     单级：com
-     多级：cn.itcast
-
- - 类或者接口
-     一个单词：首字母大写
-         Student,Person,Teacher
-     多个单词：每个单词的首字母大写
-         HelloWorld,MyName,NameDemo
-
- - 方法或者变量
-     一个单词：全部小写
-         name,age,show()
-     多个单词：从第二个单词开始，每个单词首字母大写
-         myName,showAllStudentNames()
-
- - 常量
-     一个单词：全部大写
-         AGE
-     多个单词：每个单词都大写，用_连接
-         STUDENT_MAX_AGE</code></pre>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Java概述</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OOP的三大特征--封装，继承，多态</title>
-    <url>/2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/</url>
-    <content><![CDATA[<p>本文主要对封装，继承，多态，以及抽象，接口进行一个概述</p>
-<a id="more"></a>
-
-
-<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><blockquote>
-<p>封装：java中对象就是一组变量和方法的封装（实现使用者和设计者的分离）</p>
-</blockquote>
-<pre><code>- 类的可见性：public和非public；
-- 类的成员可见性： public , protected , default( 默认)  , private;</code></pre>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式:"></a>格式:</h3><pre><code>\[修饰符] class 类名 extends 父类 &#123;
-        类体;
-       &#125;</code></pre>
-<h3 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h3><pre><code>- 继承是OOP从已有类获得新的类的方式
-- 仅支持类的单重继承
-- 只继承父类的所有非私有的成员变量和方法
-- 继承中构造方法的关系：子类中所有的构造方法默认都会访问父类中空参数的构造方法。
-  因为子类会继承父类中的数据，可能还会使用父类的数据。所以，子类初始化之前，
-  一定要先完成父类数据的初始化。
-- 子类也可以重新定义父类中同名的属性(变量的隐藏，很少这么做)和方法(方法的覆盖、重载)；
-- this, super关键字（重点）
-  1. this：表示对“自身”的引用（等同于C++的this指针）。因为表示的是一个具体对象，
-  一定不能出现在static方法中。
-  三种形式：this.x;    this.move();    this()
-  2. super：表示当前对象的“父类对象”的引用，和this一样有三种形式
-- 状态修饰符：final
-    类：类被final修饰，说明该类是最终类，不能被继承。
-    成员变量：变量被final修饰后，就变成了常量。值不能被修改。
-    成员方法：方法不能被子类重写。</code></pre>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态是什么"><a href="#多态是什么" class="headerlink" title="多态是什么"></a>多态是什么</h3><ul>
-<li>同种类的多个对象，在接收到同一个消息时却产生了不同反应和效果；</li>
-<li>从代码形式上看: 父类的对象变量调用了子类中重写的方法（注意: 往往是有<br>一个父类，而他有多个子类，且在这些子类中同时重写父类的某个方法）;</li>
-<li>多态的前提是有一个父类和多个子类</li>
-</ul>
-<h3 id="多态分类"><a href="#多态分类" class="headerlink" title="多态分类"></a>多态分类</h3><ul>
-<li>编译时多态：方法名相同、参数表不同(伪多态)，通过方法重载实现—作用小；</li>
-<li>运行时多态：运行时，根据对象的具体类型不同决定调用什么形式的方法。<br>使用父类引用指向子类对象，再调用某一父类中的方法时，不同子类会表现出不同结果）–作用大<br>运行时多态是Java动态特性的典型体现；</li>
-</ul>
-<h3 id="运行时多态"><a href="#运行时多态" class="headerlink" title="运行时多态"></a>运行时多态</h3><ul>
-<li>运行时多态的两个前提：</li>
-</ul>
-<p>  <strong>上溯造型(Upcasting)、方法重写(Overriding)</strong><br>  上溯造型：取得一个子类对象，将其地址赋给父类型的引用<br>  <code>Automobile a = new Car();</code><br>  方法重写：子类重新定义父类中的方法(方法返回值、方法名、方法参数表)；</p>
-<h3 id="方法的重载和重写"><a href="#方法的重载和重写" class="headerlink" title="方法的重载和重写"></a>方法的重载和重写</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
-<li>方法的重载(Overloading)：几个方法的方法名相同，参数表不同，称为方法的重载；</li>
-<li>方法的重写(Overriding)：子类重新定义父类中的已经存在的方法(方法名、参数表、<br> 返回值完全相同，访问控制可以不同)</li>
-<li>方法重载一般发生在一个类的内部，而方法重写一般是发生在父类、子类之间：</li>
-</ul>
-<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
-<li>子类重新定的方法不能比父类中的方法有更严格的访问权限；</li>
-<li>子类重新定义的方法不能比父类的方法传递更多的异常；</li>
-</ul>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
-<li>语法形式： 使用abstract修饰的类叫做抽象类， 使用abstract修饰的方法叫做抽象方法；</li>
-<li>抽象类不能实例化对象，只能作为父类派生子类；</li>
-<li>抽象类不一定包含抽象方法(抽象类包含n个抽象方法，n&gt;=0)，包含了抽象方法的类一定是抽象类；<br>n=0,(为了不让别人创建对象)；    </li>
-<li>抽象方法只有方法的声名，没有方法体，格式如：<br>  abstract double area();</li>
-<li>非abstract方法中可以调用abstract方法</li>
-<li>abstract和final/private/static不能共存</li>
-<li>由抽象类派生的非抽象子类必须实现父类中的所有抽象方法；<pre class="line-numbers language-none"><code class="language-none">public abstract class Pole &#123;
-	int height &#x3D;10;
-	public abstract double area ();&#x2F;&#x2F;抽象方法
-	public double volumn()&#123;
-		return area*height;
-	&#125;
-	public static void main(string [] args )&#123;
-		Pole p&#x3D;new CirclePole ();       &#x2F;&#x2F; 多态；
-		System.out.println(p.volumn);
-	&#125;
-&#125;
-
-class CirclePole extends Pole &#123;
-	int radius&#x3D;5;
-	double area()&#123;      &#x2F;&#x2F;重写父类抽象方法
-		return Math.PI * radius * radius ;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-</li>
-</ul>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
-<li>接口是一个更“纯”的抽象类。(不能含有非abstract方法，变量)</li>
-<li>接口里面定义的抽象方法被自动赋予public abstract，接口里面的变量自动被赋予public static final；</li>
-<li>在接口中声明方法时，不能使用native、static 、final 、synchronized 、private 、protected等修饰符；</li>
-<li>一个非抽象类实现了某个接口，必须覆盖（重写）接口里面所有的抽象方法</li>
-<li>一个类实现一个接口，使用关键字implements. </li>
-<li>一个类可以实现(implements)多个接口、一个接口可以继承(extends)多个接口；</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">public interface PoleInterface&#123;
-	pubic static final int HEIGHT&#x3D;20;
-	public abstract double area();
-&#125;
-class CirclePole2 implements PoleInterface&#123;
-	public double()&#123;
-
-		return 0 ;   
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <tags>
-        <tag>Java基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java集合</title>
-    <url>/2022/02/17/Java%E9%9B%86%E5%90%88/</url>
-    <content><![CDATA[<p>本文主要是对 Java 集合的介绍</p>
-<a id="more"></a>
-
-
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li><p><strong>Connection 接口</strong></p>
-<ul>
-<li><strong>List</strong> (Vector,LinkedList,ArrayList,CopyOnWriteArrayList)</li>
-<li><strong>Set</strong> (HashSet,LinkedHashSet,TreeSet)</li>
-</ul>
-</li>
-<li><p><strong>Map 接口</strong></p>
-<ul>
-<li>(HashMap,LinkedHashMap,TreeMap,ConcurrentHashMap)</li>
-</ul>
-</li>
-</ul>
-<p>List 和 Set 是集合类型，List的特点是插入有序的，元素是可重复的；<br>Set 的特点是插入无序，元素不可重复的。 Map 是<code>key-value</code>型的，<br>如果要保持插入顺序的，可以选择 LinkedHashMap, 如果要排序，可以选择<br>TreeMap。</p>
-<h2 id="集合Connection"><a href="#集合Connection" class="headerlink" title="集合Connection"></a>集合Connection</h2><h3 id="数组和集合的区别"><a href="#数组和集合的区别" class="headerlink" title="数组和集合的区别"></a>数组和集合的区别</h3><ul>
-<li><p>数组的长度固定，集合的长度可变</p>
-</li>
-<li><p>数据既可以存储基本数据类型，也可以存储引用数据类型；</p>
-<p>  集合只能存储引用类型（ int 会自动装箱成 Interger ）</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Java基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于Markdown的基本语法</title>
-    <url>/2021/01/21/%E5%85%B3%E4%BA%8EMarkdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>Markdown是一种纯文本的标记语言，通过简单的语法标记，使得普通文本有一定的格式。</p>
-<a id="more"></a>
-
-<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><p>一个#是一个标题，直到六级标题<br>一般#先接空格</p>
-<h3 id="2-字体"><a href="#2-字体" class="headerlink" title="2.字体"></a>2.字体</h3><p>两个*包起来是加粗<br>一个*是倾斜<br>三个*是倾斜加粗<br>两个~~包起来是删除<br>例如：<br><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em><br><del>这是删除的文字</del></p>
-<h3 id="3-引用"><a href="#3-引用" class="headerlink" title="3.引用"></a>3.引用</h3><p>引用的文字前加&gt;即可,可以嵌套，如加两个&gt;</p>
-<blockquote>
-<p>这是引用的内容</p>
-</blockquote>
-<h3 id="4-分割线"><a href="#4-分割线" class="headerlink" title="4.分割线"></a>4.分割线</h3><p>三个或三个以上的-或*都可以</p>
-<hr>
-<h3 id="5-图片"><a href="#5-图片" class="headerlink" title="5.图片"></a>5.图片</h3><p>格式：![图片alt](图片地址 “图片title”)<br>图片alt就是显示在图片下面的文字，对图片内容的解释<br>图片title是图片的标题，当鼠标移到图片上时显示的内容(可加可不加)</p>
-<h3 id="6-超链接"><a href="#6-超链接" class="headerlink" title="6.超链接"></a>6.超链接</h3><p>格式：[超链接名](超链接地址 “超链接title”)<br>title可加可不加<br><a href="http://baidu.com/">百度</a></p>
-<h3 id="7-列表"><a href="#7-列表" class="headerlink" title="7.列表"></a>7.列表</h3><p>(1) 无序列表<br>列表内容前加一个-,+或*都可以，列表与内容间有空格</p>
-<ul>
-<li>列表一内容</li>
-<li>列表二内容</li>
-</ul>
-<p>(2) 有序列表<br>列表内容前加数字和点即可，与内容有空格</p>
-<ol>
-<li>列表一内容</li>
-<li>列表二内容</li>
-</ol>
-<h3 id="8-代码"><a href="#8-代码" class="headerlink" title="8.代码"></a>8.代码</h3><p>格式：</p>
-<ul>
-<li>单行代码：代码之间分别用一个反引号`包起来</li>
-<li>代码块：代码之间分别用三个反引号`包起来，且两边的反引号单独占一行</li>
-</ul>
-<p><code>System.out.println(1)</code></p>
-]]></content>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/01/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<a id="more"></a>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>浅谈node.js</title>
-    <url>/2021/01/25/%E6%B5%85%E8%B0%88node-js/</url>
-    <content><![CDATA[<p>简单的说，node.js就是运行在服务端的JavaScript。</p>
-<a id="more"></a>
-
-<h2 id="第一个node-js程序：HelloWorld"><a href="#第一个node-js程序：HelloWorld" class="headerlink" title="第一个node.js程序：HelloWorld!"></a>第一个node.js程序：HelloWorld!</h2><h3 id="脚本模式"><a href="#脚本模式" class="headerlink" title="脚本模式"></a>脚本模式</h3><p><code>console.log(&quot;HelloWorld&quot;)</code><br>保存文件，文件名为HelloWorld.js，并通过node命令在命令行执行：<br>        node HelloWorld.js</p>
-<h3 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h3><p>打开cmd或node.js ，键入node进入命令交互模式，可以输入语句并显示结果</p>
-<h2 id="node-js应用"><a href="#node-js应用" class="headerlink" title="node.js应用"></a>node.js应用</h2><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>var http = require(&#39;http&#39;);
-    // 使用 require 指令来载入 http 模块，并将实例化的 HTTP 赋值给变量 http
-http.createServer(function (request, response) &#123;
-    // 发送 HTTP 头部 
-    // HTTP 状态值: 200 : OK
-    // 内容类型: text/plain
-    response.writeHead(200, &#123;&#39;Content-Type&#39;: &#39;text/plain&#39;&#125;);
-
-        // 发送响应数据 &quot;Hello World&quot;
-        response.end(&#39;Hello World\n&#39;);
-    &#125;).listen(8888);
-
-// 终端打印如下信息
-console.log(&#39;Server running at http://127.0.0.1:8888/&#39;);</code></pre>
-<h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><ul>
-<li><p><img src="13.jpg" alt="目录"></p>
-</li>
-<li><p><img src="11.jpg" alt="命令行"></p>
-</li>
-<li><p><img src="12.jpg" alt="网页"></p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>node.js</tag>
-      </tags>
-  </entry>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Java集合</title>
+      <link href="2022/02/17/Java%E9%9B%86%E5%90%88/"/>
+      <url>2022/02/17/Java%E9%9B%86%E5%90%88/</url>
+      
+        <content type="html"><![CDATA[<p>本文主要是对 Java 集合的介绍</p><a id="more"></a><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul><li><p><strong>Connection 接口</strong></p><ul><li><strong>List</strong> (Vector,LinkedList,ArrayList,CopyOnWriteArrayList)</li><li><strong>Set</strong> (HashSet,LinkedHashSet,TreeSet)</li></ul></li><li><p><strong>Map 接口</strong></p><ul><li>(HashMap,LinkedHashMap,TreeMap,ConcurrentHashMap)</li></ul></li></ul><p>List 和 Set 是集合类型，List的特点是插入有序的，元素是可重复的；<br>Set 的特点是插入无序，元素不可重复的。 Map 是<code>key-value</code>型的，<br>如果要保持插入顺序的，可以选择 LinkedHashMap, 如果要排序，可以选择<br>TreeMap。</p><h2 id="集合Connection"><a href="#集合Connection" class="headerlink" title="集合Connection"></a>集合Connection</h2><h3 id="数组和集合的区别"><a href="#数组和集合的区别" class="headerlink" title="数组和集合的区别"></a>数组和集合的区别</h3><ul><li><p>数组的长度固定，集合的长度可变</p></li><li><p>数据既可以存储基本数据类型，也可以存储引用数据类型；</p><p>  集合只能存储引用类型（ int 会自动装箱成 Interger ）</p></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>浅谈node.js</title>
+      <link href="2021/01/25/%E6%B5%85%E8%B0%88node-js/"/>
+      <url>2021/01/25/%E6%B5%85%E8%B0%88node-js/</url>
+      
+        <content type="html"><![CDATA[<p>简单的说，node.js就是运行在服务端的JavaScript。</p><a id="more"></a><h2 id="第一个node-js程序：HelloWorld"><a href="#第一个node-js程序：HelloWorld" class="headerlink" title="第一个node.js程序：HelloWorld!"></a>第一个node.js程序：HelloWorld!</h2><h3 id="脚本模式"><a href="#脚本模式" class="headerlink" title="脚本模式"></a>脚本模式</h3><p><code>console.log(&quot;HelloWorld&quot;)</code><br>保存文件，文件名为HelloWorld.js，并通过node命令在命令行执行：<br>        node HelloWorld.js</p><h3 id="交互模式"><a href="#交互模式" class="headerlink" title="交互模式"></a>交互模式</h3><p>打开cmd或node.js ，键入node进入命令交互模式，可以输入语句并显示结果</p><h2 id="node-js应用"><a href="#node-js应用" class="headerlink" title="node.js应用"></a>node.js应用</h2><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>var http = require(&#39;http&#39;);    // 使用 require 指令来载入 http 模块，并将实例化的 HTTP 赋值给变量 httphttp.createServer(function (request, response) &#123;    // 发送 HTTP 头部     // HTTP 状态值: 200 : OK    // 内容类型: text/plain    response.writeHead(200, &#123;&#39;Content-Type&#39;: &#39;text/plain&#39;&#125;);        // 发送响应数据 &quot;Hello World&quot;        response.end(&#39;Hello World\n&#39;);    &#125;).listen(8888);// 终端打印如下信息console.log(&#39;Server running at http://127.0.0.1:8888/&#39;);</code></pre><h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><ul><li><p><img src="13.jpg" alt="目录"></p></li><li><p><img src="11.jpg" alt="命令行"></p></li><li><p><img src="12.jpg" alt="网页"></p></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> node.js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>OOP的三大特征--封装，继承，多态</title>
+      <link href="2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/"/>
+      <url>2021/01/22/OOP%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81-%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81/</url>
+      
+        <content type="html"><![CDATA[<p>本文主要对封装，继承，多态，以及抽象，接口进行一个概述</p><a id="more"></a><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><blockquote><p>封装：java中对象就是一组变量和方法的封装（实现使用者和设计者的分离）</p></blockquote><pre><code>- 类的可见性：public和非public；- 类的成员可见性： public , protected , default( 默认)  , private;</code></pre><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式:"></a>格式:</h3><pre><code>\[修饰符] class 类名 extends 父类 &#123;        类体;       &#125;</code></pre><h3 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h3><pre><code>- 继承是OOP从已有类获得新的类的方式- 仅支持类的单重继承- 只继承父类的所有非私有的成员变量和方法- 继承中构造方法的关系：子类中所有的构造方法默认都会访问父类中空参数的构造方法。  因为子类会继承父类中的数据，可能还会使用父类的数据。所以，子类初始化之前，  一定要先完成父类数据的初始化。- 子类也可以重新定义父类中同名的属性(变量的隐藏，很少这么做)和方法(方法的覆盖、重载)；- this, super关键字（重点）  1. this：表示对“自身”的引用（等同于C++的this指针）。因为表示的是一个具体对象，  一定不能出现在static方法中。  三种形式：this.x;    this.move();    this()  2. super：表示当前对象的“父类对象”的引用，和this一样有三种形式- 状态修饰符：final    类：类被final修饰，说明该类是最终类，不能被继承。    成员变量：变量被final修饰后，就变成了常量。值不能被修改。    成员方法：方法不能被子类重写。</code></pre><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态是什么"><a href="#多态是什么" class="headerlink" title="多态是什么"></a>多态是什么</h3><ul><li>同种类的多个对象，在接收到同一个消息时却产生了不同反应和效果；</li><li>从代码形式上看: 父类的对象变量调用了子类中重写的方法（注意: 往往是有<br>一个父类，而他有多个子类，且在这些子类中同时重写父类的某个方法）;</li><li>多态的前提是有一个父类和多个子类</li></ul><h3 id="多态分类"><a href="#多态分类" class="headerlink" title="多态分类"></a>多态分类</h3><ul><li>编译时多态：方法名相同、参数表不同(伪多态)，通过方法重载实现—作用小；</li><li>运行时多态：运行时，根据对象的具体类型不同决定调用什么形式的方法。<br>使用父类引用指向子类对象，再调用某一父类中的方法时，不同子类会表现出不同结果）–作用大<br>运行时多态是Java动态特性的典型体现；</li></ul><h3 id="运行时多态"><a href="#运行时多态" class="headerlink" title="运行时多态"></a>运行时多态</h3><ul><li>运行时多态的两个前提：</li></ul><p>  <strong>上溯造型(Upcasting)、方法重写(Overriding)</strong><br>  上溯造型：取得一个子类对象，将其地址赋给父类型的引用<br>  <code>Automobile a = new Car();</code><br>  方法重写：子类重新定义父类中的方法(方法返回值、方法名、方法参数表)；</p><h3 id="方法的重载和重写"><a href="#方法的重载和重写" class="headerlink" title="方法的重载和重写"></a>方法的重载和重写</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul><li>方法的重载(Overloading)：几个方法的方法名相同，参数表不同，称为方法的重载；</li><li>方法的重写(Overriding)：子类重新定义父类中的已经存在的方法(方法名、参数表、<br> 返回值完全相同，访问控制可以不同)</li><li>方法重载一般发生在一个类的内部，而方法重写一般是发生在父类、子类之间：</li></ul><h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul><li>子类重新定的方法不能比父类中的方法有更严格的访问权限；</li><li>子类重新定义的方法不能比父类的方法传递更多的异常；</li></ul><h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul><li>语法形式： 使用abstract修饰的类叫做抽象类， 使用abstract修饰的方法叫做抽象方法；</li><li>抽象类不能实例化对象，只能作为父类派生子类；</li><li>抽象类不一定包含抽象方法(抽象类包含n个抽象方法，n&gt;=0)，包含了抽象方法的类一定是抽象类；<br>n=0,(为了不让别人创建对象)；    </li><li>抽象方法只有方法的声名，没有方法体，格式如：<br>  abstract double area();</li><li>非abstract方法中可以调用abstract方法</li><li>abstract和final/private/static不能共存</li><li>由抽象类派生的非抽象子类必须实现父类中的所有抽象方法；<pre class="line-numbers language-none"><code class="language-none">public abstract class Pole &#123;int height &#x3D;10;public abstract double area ();&#x2F;&#x2F;抽象方法public double volumn()&#123;return area*height;&#125;public static void main(string [] args )&#123;Pole p&#x3D;new CirclePole ();       &#x2F;&#x2F; 多态；System.out.println(p.volumn);&#125;&#125;class CirclePole extends Pole &#123;int radius&#x3D;5;double area()&#123;      &#x2F;&#x2F;重写父类抽象方法return Math.PI * radius * radius ;&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul><li>接口是一个更“纯”的抽象类。(不能含有非abstract方法，变量)</li><li>接口里面定义的抽象方法被自动赋予public abstract，接口里面的变量自动被赋予public static final；</li><li>在接口中声明方法时，不能使用native、static 、final 、synchronized 、private 、protected等修饰符；</li><li>一个非抽象类实现了某个接口，必须覆盖（重写）接口里面所有的抽象方法</li><li>一个类实现一个接口，使用关键字implements. </li><li>一个类可以实现(implements)多个接口、一个接口可以继承(extends)多个接口；</li></ul><pre class="line-numbers language-none"><code class="language-none">public interface PoleInterface&#123;pubic static final int HEIGHT&#x3D;20;public abstract double area();&#125;class CirclePole2 implements PoleInterface&#123;public double()&#123;return 0 ;   &#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java概述</title>
+      <link href="2021/01/22/Java%E6%A6%82%E8%BF%B0/"/>
+      <url>2021/01/22/Java%E6%A6%82%E8%BF%B0/</url>
+      
+        <content type="html"><![CDATA[<p>本文主要是对Java的一个概述。</p><a id="more"></a><h2 id="JVM-JDK-JRE"><a href="#JVM-JDK-JRE" class="headerlink" title="JVM,JDK,JRE"></a>JVM,JDK,JRE</h2><ul><li>JVM: Java Virtual Machine（java虚拟机）是一个虚构出来的计算机，通过在实际的计算机上仿真模拟各种计算机功能实现的。<pre><code> JVM屏蔽了与具体操作系统平台相关的信息，使得java程序只需要生成在java虚拟机上运行的字节码文件，就可以在多种平 台不加修改的运行。JVM在执行字节码文件时，最终还是把字节码文件解释成具体平台上的机器指令执行。</code></pre></li><li>JRE：Java Runtime Environment（Java运行环境），运行Java程序所必须的环境的集合，包含JVM标准实现及Java核心类库。  </li><li>JDK: Java Development Kit(Java开发工具包)，java开发环境。包括JRE和开发工具(javac,java)。</li></ul><h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul><li>path: 为OS能够方便、正确地查找JDK命令,即为了让javac和java命令可以在任意目录下使用。</li><li>classpath: 解释器装载类时的搜索根目录,即为了让class文件可以在任意目录下运行。</li></ul><h2 id="Application-程序的基本编写运行步骤"><a href="#Application-程序的基本编写运行步骤" class="headerlink" title="Application 程序的基本编写运行步骤"></a>Application 程序的基本编写运行步骤</h2><ol><li>设置系统环境变量</li><li>编辑文本文件 HelloWorld.Java</li><li>Javac    HelloWorld.Java<br>编译命令  文件名<br>生成 HelloWorld.class字节码文件</li><li>Java        HelloWorld<br>执行命令     类名</li></ol><p>注意: Javac 编译源文件的时候，需要.Java后缀名<br>      Java解释执行字节码文件的时候，不能带.class后缀名</p><h2 id="标识符命名规则"><a href="#标识符命名规则" class="headerlink" title="标识符命名规则"></a>标识符命名规则</h2><ol><li><p>标识符：给类，接口，方法或者变量起名字的符号</p></li><li><p>组成规则：</p><pre><code> - 英文字母大小写 - 数字 - \_和$</code></pre></li><li><p>注意事项：</p><pre><code> - 不能以数字开头 - 不能是Java中的关键字 - 区分大小写</code></pre></li><li><p>常见命名方式：</p><pre><code> - 包 （其实就是文件夹,用于解决相同类名问题）     全部小写     单级：com     多级：cn.itcast - 类或者接口     一个单词：首字母大写         Student,Person,Teacher     多个单词：每个单词的首字母大写         HelloWorld,MyName,NameDemo - 方法或者变量     一个单词：全部小写         name,age,show()     多个单词：从第二个单词开始，每个单词首字母大写         myName,showAllStudentNames() - 常量     一个单词：全部大写         AGE     多个单词：每个单词都大写，用_连接         STUDENT_MAX_AGE</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java概述 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于Markdown的基本语法</title>
+      <link href="2021/01/21/%E5%85%B3%E4%BA%8EMarkdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+      <url>2021/01/21/%E5%85%B3%E4%BA%8EMarkdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>Markdown是一种纯文本的标记语言，通过简单的语法标记，使得普通文本有一定的格式。</p><a id="more"></a><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><p>一个#是一个标题，直到六级标题<br>一般#先接空格</p><h3 id="2-字体"><a href="#2-字体" class="headerlink" title="2.字体"></a>2.字体</h3><p>两个*包起来是加粗<br>一个*是倾斜<br>三个*是倾斜加粗<br>两个~~包起来是删除<br>例如：<br><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em><br><del>这是删除的文字</del></p><h3 id="3-引用"><a href="#3-引用" class="headerlink" title="3.引用"></a>3.引用</h3><p>引用的文字前加&gt;即可,可以嵌套，如加两个&gt;</p><blockquote><p>这是引用的内容</p></blockquote><h3 id="4-分割线"><a href="#4-分割线" class="headerlink" title="4.分割线"></a>4.分割线</h3><p>三个或三个以上的-或*都可以</p><hr><h3 id="5-图片"><a href="#5-图片" class="headerlink" title="5.图片"></a>5.图片</h3><p>格式：![图片alt](图片地址 “图片title”)<br>图片alt就是显示在图片下面的文字，对图片内容的解释<br>图片title是图片的标题，当鼠标移到图片上时显示的内容(可加可不加)</p><h3 id="6-超链接"><a href="#6-超链接" class="headerlink" title="6.超链接"></a>6.超链接</h3><p>格式：[超链接名](超链接地址 “超链接title”)<br>title可加可不加<br><a href="http://baidu.com/">百度</a></p><h3 id="7-列表"><a href="#7-列表" class="headerlink" title="7.列表"></a>7.列表</h3><p>(1) 无序列表<br>列表内容前加一个-,+或*都可以，列表与内容间有空格</p><ul><li>列表一内容</li><li>列表二内容</li></ul><p>(2) 有序列表<br>列表内容前加数字和点即可，与内容有空格</p><ol><li>列表一内容</li><li>列表二内容</li></ol><h3 id="8-代码"><a href="#8-代码" class="headerlink" title="8.代码"></a>8.代码</h3><p>格式：</p><ul><li>单行代码：代码之间分别用一个反引号`包起来</li><li>代码块：代码之间分别用三个反引号`包起来，且两边的反引号单独占一行</li></ul><p><code>System.out.println(1)</code></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="2021/01/17/hello-world/"/>
+      <url>2021/01/17/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
